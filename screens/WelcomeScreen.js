@@ -1,38 +1,34 @@
 import React from "react";
-import { View, StyleSheet, Text, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 
-const bg = { uri : "https://i.ibb.co/ng3x0kQ/1.png" };
+const bg = { uri: "https://i.ibb.co/ng3x0kQ/1.png" };
 
-const WelcomeScreen = ({navigation}) => {
+const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} resizeMode="cover" style={styles.image}>
-        <View
-          style={styles.layoutEffect}
-        >
+        <View style={styles.layoutEffect}>
           <TouchableOpacity
             style={styles.bRegister}
-            onPress={ () => {
-              navigation.navigate("RegisterScreen")
+            onPress={() => {
+              navigation.navigate("RegisterScreen");
             }}
           >
-            <Text
-              style={styles.bTextRegister}
-            >
-              ลงทะเบียน
-            </Text>
+            <Text style={styles.bTextRegister}>ลงทะเบียน</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.bLogin}
-            onPress={ () => {
-              navigation.navigate("LoginScreen")
+            onPress={() => {
+              navigation.navigate("LoginScreen");
             }}
           >
-            <Text
-              style={styles.bTextLogin}
-            >
-              เข้าสู่ระบบ
-            </Text>
+            <Text style={styles.bTextLogin}>เข้าสู่ระบบ</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -78,7 +74,7 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 20,
     color: "#ffffff",
-  }
+  },
 });
 
 export default WelcomeScreen;

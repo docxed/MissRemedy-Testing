@@ -2,47 +2,40 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const UserReceiveComponent = (props) => {
-
-  let itemList = []
+  let itemList = [];
 
   props.router.params.arr.forEach((item, index) => {
-    itemList.push( 
+    itemList.push(
       <View key={index} style={styles.bgYellow}>
         <View style={styles.widthEnd}>
-          <Text style={styles.receiveHeaderText}>
-            {item.name}
-          </Text>
-          <Text style={styles.receiveText}>
-            {item.medName}
-          </Text>
-          <Text style={styles.receiveText}>
-            {item.date}
-          </Text>
+          <Text style={styles.receiveHeaderText}>{item.name}</Text>
+          <Text style={styles.receiveText}>{item.medName}</Text>
+          <Text style={styles.receiveText}>{item.date}</Text>
         </View>
         <View>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.iconPaddingChat}
-            onPress={ () => {
-              props.navigator.navigate("UserChatScreen", {router: props.router, indexer: "People0"+(index+1), name: item.name})
+            onPress={() => {
+              props.navigator.navigate("UserChatScreen", {
+                router: props.router,
+                indexer: "People0" + (index + 1),
+                name: item.name,
+              });
             }}
           >
             <Text style={styles.receiveTextChat}>แชท</Text>
           </TouchableOpacity>
         </View>
       </View>
-    )
-  })
+    );
+  });
 
   return (
     <View style={styles.componentStyle}>
-          <Text style={styles.titleComponent}>
-            นัดหมายรับยา
-          </Text>
+      <Text style={styles.titleComponent}>นัดหมายรับยา</Text>
 
-          <View style={styles.receivePadding}>
-            {itemList}
-          </View>
-        </View>
+      <View style={styles.receivePadding}>{itemList}</View>
+    </View>
   );
 };
 
@@ -86,12 +79,12 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 18,
     fontWeight: "600",
-    color: "#ffffff"
+    color: "#ffffff",
   },
   miniDataText: {
     fontFamily: "Kanit",
     fontSize: 15,
-    color: "#ffffff"
+    color: "#ffffff",
   },
   icon: {
     width: 100,

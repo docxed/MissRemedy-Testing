@@ -5,34 +5,29 @@ import { Header } from "react-native-elements";
 
 import { useSelector } from "react-redux";
 
-const PharmacistUserDataScreen = ({navigation, route}) => {
-
+const PharmacistUserDataScreen = ({ navigation, route }) => {
   const medSelect = useSelector((state) => state.remedy.med);
 
-  const dataSet = route.params.router
+  const dataSet = route.params.router;
 
-  let itemList = []
+  let itemList = [];
 
-  var price = 0
+  var price = 0;
 
   medSelect.forEach((item, index) => {
-    price += parseInt(item.price)
-    itemList.push( 
+    price += parseInt(item.price);
+    itemList.push(
       <View key={index} style={styles.bgYellow}>
         <View style={styles.widthEnd}>
           <Text style={styles.receiveHeaderText}>
             x{item.quantity} | {item.name}
           </Text>
-          <Text style={styles.receiveText}>
-            {item.description}
-          </Text>
-          <Text style={styles.receiveText}>
-            ค่ายา : ฿{item.price}
-          </Text>
+          <Text style={styles.receiveText}>{item.description}</Text>
+          <Text style={styles.receiveText}>ค่ายา : ฿{item.price}</Text>
         </View>
       </View>
-    )
-  })
+    );
+  });
 
   return (
     <View style={styles.container}>
@@ -40,29 +35,36 @@ const PharmacistUserDataScreen = ({navigation, route}) => {
         containerStyle={styles.header}
         placement="center"
         leftComponent={
-          <Ionicons 
-            name="arrow-back-outline" size={40}
-            onPress={ () => {
-              navigation.navigate("PharmacistHomeScreen", {id: dataSet.params.id, name: dataSet.params.name, surname: dataSet.params.surname, arr: dataSet.params.arr})
+          <Ionicons
+            name="arrow-back-outline"
+            size={40}
+            onPress={() => {
+              navigation.navigate("PharmacistHomeScreen", {
+                id: dataSet.params.id,
+                name: dataSet.params.name,
+                surname: dataSet.params.surname,
+                arr: dataSet.params.arr,
+              });
             }}
-          />}
+          />
+        }
         centerComponent={<Text style={styles.headerText}>Miss Remedy</Text>}
         rightComponent={
-        <Ionicons
-          name="log-out-outline" size={40}
-          onPress={ () => {
-            navigation.navigate("LoginScreen")
-          }}
-         />}
+          <Ionicons
+            name="log-out-outline"
+            size={40}
+            onPress={() => {
+              navigation.navigate("LoginScreen");
+            }}
+          />
+        }
       />
       <ImageBackground resizeMode="cover" style={styles.image}>
         <View style={styles.receivePadding}>
           {itemList}
           <View style={styles.bgYellow}>
             <View style={styles.widthEnd}>
-              <Text style={styles.receiveHeaderText}>
-                ยอดรวม ฿{price}
-              </Text>
+              <Text style={styles.receiveHeaderText}>ยอดรวม ฿{price}</Text>
             </View>
           </View>
         </View>
@@ -111,12 +113,12 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 18,
     fontWeight: "600",
-    color: "#ffffff"
+    color: "#ffffff",
   },
   miniDataText: {
     fontFamily: "Kanit",
     fontSize: 15,
-    color: "#ffffff"
+    color: "#ffffff",
   },
   icon: {
     width: 100,

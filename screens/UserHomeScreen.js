@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Header } from "react-native-elements";
 
@@ -7,85 +14,65 @@ import UserNotificationComponent from "../components/UserNotificationComponent";
 import UserReceiveComponent from "../components/UserReceiveComponent";
 import UserAppointmentComponent from "../components/UserAppointmentComponent";
 
-const bg = { uri : "https://i.ibb.co/f4TdQnk/bg1.png" };
-const image = { uri : "https://i.ibb.co/vsxjxgB/image.png" };
-const icon01 = { uri : "https://i.ibb.co/7JP20zP/appointmentf.png" };
-const icon02 = { uri : "https://i.ibb.co/nzTMKy8/receivef.png" };
-const icon03 = { uri : "https://i.ibb.co/0sXq987/notificationf.png" };
+const bg = { uri: "https://i.ibb.co/f4TdQnk/bg1.png" };
+const image = { uri: "https://i.ibb.co/vsxjxgB/image.png" };
+const icon01 = { uri: "https://i.ibb.co/7JP20zP/appointmentf.png" };
+const icon02 = { uri: "https://i.ibb.co/nzTMKy8/receivef.png" };
+const icon03 = { uri: "https://i.ibb.co/0sXq987/notificationf.png" };
 
-const UserHomeScreen = ({route, navigation}) => {
-
+const UserHomeScreen = ({ route, navigation }) => {
   var isView = 0;
 
   // { route.params.username }
-  var [ UserHeader, setUserHeader ] =
-  React.useState(
+  var [UserHeader, setUserHeader] = React.useState(
     <View>
       <View style={styles.byRow}>
         <View style={styles.imagePadding}>
-          <Image
-            style={styles.userLogo}
-            source={image}
-          />
+          <Image style={styles.userLogo} source={image} />
         </View>
         <View style={styles.dataPadding}>
           <Text style={styles.dataText}>
             คุณ {route.params.name} {route.params.surname}
           </Text>
-          <Text style={styles.miniDataText}>
-            หมอประจำตัว | -
-          </Text>
-          <Text style={styles.miniDataText}>
-            HN. {route.params.id}
-          </Text>
+          <Text style={styles.miniDataText}>หมอประจำตัว | -</Text>
+          <Text style={styles.miniDataText}>HN. {route.params.id}</Text>
         </View>
       </View>
     </View>
   );
 
-  var [ ToggleButton, setToggleButton ] =
-  React.useState(
+  var [ToggleButton, setToggleButton] = React.useState(
     <View>
       <View style={styles.byRowIcon}>
-      <TouchableOpacity
-        style={styles.iconPadding}
-        onPress={ () => {
-          changeToAppointment()
-        }}
-        >
-        <Image
-          style={styles.icon}
-          source={icon01}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.iconPadding}
-        onPress={ () => {
-          changeToReceive()
-        }}
-        >
-          <Image
-            style={styles.iconOpaque}
-            source={icon02}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.iconPadding}
-          onPress={ () => {
-            changeToNotification()
+          onPress={() => {
+            changeToAppointment();
           }}
         >
-          <Image
-            style={styles.iconOpaque}
-            source={icon03}
-          />
+          <Image style={styles.icon} source={icon01} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.iconPadding}
+          onPress={() => {
+            changeToReceive();
+          }}
+        >
+          <Image style={styles.iconOpaque} source={icon02} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.iconPadding}
+          onPress={() => {
+            changeToNotification();
+          }}
+        >
+          <Image style={styles.iconOpaque} source={icon03} />
         </TouchableOpacity>
       </View>
     </View>
   );
 
-  var [ SelectedComponent, setSelectedComponent ] =
-  React.useState(
+  var [SelectedComponent, setSelectedComponent] = React.useState(
     <UserAppointmentComponent />
   );
 
@@ -96,42 +83,31 @@ const UserHomeScreen = ({route, navigation}) => {
         <View style={styles.byRowIcon}>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToAppointment()
+            onPress={() => {
+              changeToAppointment();
             }}
-            >
-            <Image
-              style={styles.icon}
-              source={icon01}
-            />
+          >
+            <Image style={styles.icon} source={icon01} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToReceive()
-            }}
-            >
-            <Image
-              style={styles.iconOpaque}
-              source={icon02}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.iconPadding}
-            onPress={ () => {
-              changeToNotification()
+            onPress={() => {
+              changeToReceive();
             }}
           >
-            <Image
-              style={styles.iconOpaque}
-              source={icon03}
-            />
+            <Image style={styles.iconOpaque} source={icon02} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconPadding}
+            onPress={() => {
+              changeToNotification();
+            }}
+          >
+            <Image style={styles.iconOpaque} source={icon03} />
           </TouchableOpacity>
         </View>
       );
-      setSelectedComponent(
-        <UserAppointmentComponent />
-      );
+      setSelectedComponent(<UserAppointmentComponent />);
     }
   }
 
@@ -142,41 +118,32 @@ const UserHomeScreen = ({route, navigation}) => {
         <View style={styles.byRowIcon}>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToAppointment()
+            onPress={() => {
+              changeToAppointment();
             }}
-            >
-            <Image
-              style={styles.iconOpaque}
-              source={icon01}
-            />
+          >
+            <Image style={styles.iconOpaque} source={icon01} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToReceive()
-            }}
-            >
-            <Image
-              style={styles.icon}
-              source={icon02}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.iconPadding}
-            onPress={ () => {
-              changeToNotification()
+            onPress={() => {
+              changeToReceive();
             }}
           >
-            <Image
-              style={styles.iconOpaque}
-              source={icon03}
-            />
+            <Image style={styles.icon} source={icon02} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconPadding}
+            onPress={() => {
+              changeToNotification();
+            }}
+          >
+            <Image style={styles.iconOpaque} source={icon03} />
           </TouchableOpacity>
         </View>
       );
       setSelectedComponent(
-        <UserReceiveComponent navigator={navigation} router={route}/>
+        <UserReceiveComponent navigator={navigation} router={route} />
       );
     }
   }
@@ -188,44 +155,33 @@ const UserHomeScreen = ({route, navigation}) => {
         <View style={styles.byRowIcon}>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToAppointment()
+            onPress={() => {
+              changeToAppointment();
             }}
-            >
-            <Image
-              style={styles.iconOpaque}
-              source={icon01}
-            />
+          >
+            <Image style={styles.iconOpaque} source={icon01} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconPadding}
-            onPress={ () => {
-              changeToReceive()
-            }}
-            >
-            <Image
-              style={styles.iconOpaque}
-              source={icon02}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.iconPadding}
-            onPress={ () => {
-              changeToNotification()
+            onPress={() => {
+              changeToReceive();
             }}
           >
-            <Image
-              style={styles.icon}
-              source={icon03}
-            />
+            <Image style={styles.iconOpaque} source={icon02} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.iconPadding}
+            onPress={() => {
+              changeToNotification();
+            }}
+          >
+            <Image style={styles.icon} source={icon03} />
           </TouchableOpacity>
         </View>
       );
       setSelectedComponent(
         <View style={styles.componentStyle}>
-          <Text style={styles.titleComponent}>
-            แจ้งเตือนการทานยา
-          </Text>
+          <Text style={styles.titleComponent}>แจ้งเตือนการทานยา</Text>
           <View style={styles.receivePadding}>
             <UserNotificationComponent />
           </View>
@@ -241,23 +197,19 @@ const UserHomeScreen = ({route, navigation}) => {
         placement="center"
         centerComponent={<Text style={styles.headerText}>Miss Remedy</Text>}
         rightComponent={
-        <Ionicons 
-          name="log-out-outline" size={40}
-          onPress={ () => {
-            navigation.navigate("LoginScreen")
-          }}
-         />}
+          <Ionicons
+            name="log-out-outline"
+            size={40}
+            onPress={() => {
+              navigation.navigate("LoginScreen");
+            }}
+          />
+        }
       />
       <ImageBackground source={bg} resizeMode="cover" style={styles.image}>
-        <View>
-          { UserHeader }
-        </View>
-        <View>
-          { ToggleButton }
-        </View>
-        <View>
-          { SelectedComponent }
-        </View>
+        <View>{UserHeader}</View>
+        <View>{ToggleButton}</View>
+        <View>{SelectedComponent}</View>
       </ImageBackground>
     </View>
   );
@@ -303,12 +255,12 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 18,
     fontWeight: "600",
-    color: "#ffffff"
+    color: "#ffffff",
   },
   miniDataText: {
     fontFamily: "Kanit",
     fontSize: 15,
-    color: "#ffffff"
+    color: "#ffffff",
   },
   icon: {
     width: 100,

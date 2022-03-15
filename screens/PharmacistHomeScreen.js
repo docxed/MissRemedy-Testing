@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Header } from "react-native-elements";
 
@@ -7,31 +14,24 @@ import { useSelector } from "react-redux";
 
 import PharmacistHospitalComponent from "../components/PharmacistHospitalComponent";
 
-const bg = { uri : "https://i.ibb.co/f4TdQnk/bg1.png" };
-const icon = { uri : "https://i.ibb.co/8MZVDTX/hospitalf.png" };
-const image = { uri : "https://i.ibb.co/vsxjxgB/image.png" };
+const bg = { uri: "https://i.ibb.co/f4TdQnk/bg1.png" };
+const icon = { uri: "https://i.ibb.co/8MZVDTX/hospitalf.png" };
+const image = { uri: "https://i.ibb.co/vsxjxgB/image.png" };
 
-const PharmacistHomeScreen = ({route, navigation}) => {
-
+const PharmacistHomeScreen = ({ route, navigation }) => {
   const medSelect = useSelector((state) => state.remedy.med);
 
   var isView = 0;
 
   // { route.params.username }
-  var [ PharmacistHeader, setPharmacistHeader ] =
-  React.useState(
+  var [PharmacistHeader, setPharmacistHeader] = React.useState(
     <View>
       <View style={styles.byRow}>
         <View style={styles.imagePadding}>
-          <Image
-            style={styles.userLogo}
-            source={image}
-          />
+          <Image style={styles.userLogo} source={image} />
         </View>
         <View style={styles.dataPadding}>
-          <Text style={styles.dataText}>
-            {route.params.shopname}
-          </Text>
+          <Text style={styles.dataText}>{route.params.shopname}</Text>
           <Text style={styles.miniDataText}>
             คุณ {route.params.name} {route.params.surname}
           </Text>
@@ -40,23 +40,18 @@ const PharmacistHomeScreen = ({route, navigation}) => {
     </View>
   );
 
-  var [ ToggleButton, setToggleButton ] =
-  React.useState(
+  var [ToggleButton, setToggleButton] = React.useState(
     <View>
       <View style={styles.byRowIcon}>
         <TouchableOpacity style={styles.iconPadding}>
-          <Image
-            style={styles.icon}
-            source={icon}
-          />
+          <Image style={styles.icon} source={icon} />
         </TouchableOpacity>
       </View>
     </View>
   );
 
-  var [ SelectedComponent, setSelectedComponent ] =
-  React.useState(
-    <PharmacistHospitalComponent navigator={navigation} router={route}/>
+  var [SelectedComponent, setSelectedComponent] = React.useState(
+    <PharmacistHospitalComponent navigator={navigation} router={route} />
   );
 
   return (
@@ -66,23 +61,19 @@ const PharmacistHomeScreen = ({route, navigation}) => {
         placement="center"
         centerComponent={<Text style={styles.headerText}>Miss Remedy</Text>}
         rightComponent={
-          <Ionicons 
-            name="log-out-outline" size={40}
-            onPress={ () => {
-              navigation.navigate("LoginScreen")
+          <Ionicons
+            name="log-out-outline"
+            size={40}
+            onPress={() => {
+              navigation.navigate("LoginScreen");
             }}
-           />}
+          />
+        }
       />
       <ImageBackground source={bg} resizeMode="cover" style={styles.image}>
-        <View>
-          { PharmacistHeader }
-        </View>
-        <View>
-          { ToggleButton }
-        </View>
-        <View>
-          { SelectedComponent }
-        </View>
+        <View>{PharmacistHeader}</View>
+        <View>{ToggleButton}</View>
+        <View>{SelectedComponent}</View>
       </ImageBackground>
     </View>
   );
@@ -128,12 +119,12 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 18,
     fontWeight: "600",
-    color: "#ffffff"
+    color: "#ffffff",
   },
   miniDataText: {
     fontFamily: "Kanit",
     fontSize: 15,
-    color: "#ffffff"
+    color: "#ffffff",
   },
   icon: {
     width: 100,
@@ -217,7 +208,7 @@ const styles = StyleSheet.create({
     fontFamily: "Kanit",
     fontSize: 20,
     fontWeight: "600",
-  }
+  },
 });
 
 export default PharmacistHomeScreen;

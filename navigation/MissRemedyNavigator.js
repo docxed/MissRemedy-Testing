@@ -18,44 +18,52 @@ const MainNavigator = createNativeStackNavigator();
 export default function MissRemedyNavigator() {
   return (
     <NavigationContainer>
-      <MainNavigator.Navigator 
+      <MainNavigator.Navigator
         initialRouteName="WelcomeScreen"
         screenOptions={{
-          headerShown: false}}>
-
+          headerShown: false,
+        }}
+      >
         <MainNavigator.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
-          options={{title: "Welcome Screen"}}/>
+          options={{ title: "Welcome Screen" }}
+        />
         <MainNavigator.Screen
           name="RegisterScreen"
           component={RegisterScreen}
-          options={{title: "Register Screen"}}/>
+          options={{ title: "Register Screen" }}
+        />
         <MainNavigator.Screen
           name="LoginScreen"
           component={LoginScreen}
-          options={{title: "Login Screen"}}/>
+          options={{ title: "Login Screen" }}
+        />
         <MainNavigator.Screen
           name="UserHomeScreen"
           component={UserHomeScreen}
-          options={{title: "User Home Screen"}}/>
+          options={{ title: "User Home Screen" }}
+        />
         <MainNavigator.Screen
           name="PharmacistHomeScreen"
           component={PharmacistHomeScreen}
-          options={{title: "Pharmacist Home Screen"}}/>
-          <MainNavigator.Screen
+          options={{ title: "Pharmacist Home Screen" }}
+        />
+        <MainNavigator.Screen
           name="PharmacistUserDataScreen"
           component={PharmacistUserDataScreen}
-          options={{title: "Pharmacist UserData Screen"}}/>
-          <MainNavigator.Screen
+          options={{ title: "Pharmacist UserData Screen" }}
+        />
+        <MainNavigator.Screen
           name="PharmacistChatScreen"
           component={PharmacistChatScreen}
-          options={{title: "Pharmacist Chat Screen"}}/>
-          <MainNavigator.Screen
+          options={{ title: "Pharmacist Chat Screen" }}
+        />
+        <MainNavigator.Screen
           name="UserChatScreen"
           component={UserChatScreen}
-          options={{title: "User Chat Screen"}}/>
-
+          options={{ title: "User Chat Screen" }}
+        />
       </MainNavigator.Navigator>
     </NavigationContainer>
   );

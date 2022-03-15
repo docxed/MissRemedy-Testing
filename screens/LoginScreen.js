@@ -1,86 +1,65 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 
 import PharmacistLoginComponent from "../components/PharmacistLoginComponent";
 import UserLoginComponent from "../components/UserLoginComponent";
 
-const bg = { uri : "https://i.ibb.co/DWdc43w/2.png" };
+const bg = { uri: "https://i.ibb.co/DWdc43w/2.png" };
 
-const LoginScreen = ({navigation}) => {
-
-  var [ isView, setIsView ] = React.useState(0);
-  var [ LoginComponent, setLoginComponent ] = React.useState(<UserLoginComponent navigator={navigation} />);
+const LoginScreen = ({ navigation }) => {
+  var [isView, setIsView] = React.useState(0);
+  var [LoginComponent, setLoginComponent] = React.useState(
+    <UserLoginComponent navigator={navigation} />
+  );
 
   function changeToUser() {
     if (isView == 1) {
-      setLoginComponent(
-      <UserLoginComponent
-        navigator={navigation}
-      />
-      )
+      setLoginComponent(<UserLoginComponent navigator={navigation} />);
       setIsView(0);
-    } 
-  };
+    }
+  }
 
   function changeToPharmacist() {
     if (isView == 0) {
-      setLoginComponent(
-      <PharmacistLoginComponent 
-        navigator={navigation}
-      />
-      )
+      setLoginComponent(<PharmacistLoginComponent navigator={navigation} />);
       setIsView(1);
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} resizeMode="cover" style={styles.image}>
-        <View
-          style={styles.layoutEffect}
-        >
+        <View style={styles.layoutEffect}>
           <TouchableOpacity
-            onPress={ () => {
-              changeToUser()
+            onPress={() => {
+              changeToUser();
             }}
           >
-            <Text
-              style={styles.userButton}
-            >
-              ผู้ใช้ทั่วไป
-            </Text>
+            <Text style={styles.userButton}>ผู้ใช้ทั่วไป</Text>
           </TouchableOpacity>
-          <Text
-            style={styles.separator}
-          >
-            |
-          </Text>
+          <Text style={styles.separator}>|</Text>
           <TouchableOpacity
-            onPress={ () => {
-              changeToPharmacist()
+            onPress={() => {
+              changeToPharmacist();
             }}
           >
-            <Text
-              style={styles.pharButton}
-            >
-              เภสัช
-            </Text>
+            <Text style={styles.pharButton}>เภสัช</Text>
           </TouchableOpacity>
         </View>
-        <View>
-            {LoginComponent}
-        </View>
+        <View>{LoginComponent}</View>
         <TouchableOpacity
           style={styles.bRegister}
-          onPress={ () => {
-            navigation.navigate("RegisterScreen")
+          onPress={() => {
+            navigation.navigate("RegisterScreen");
           }}
         >
-          <Text
-            style={styles.bTextRegister}
-          >
-            ลงทะเบียน
-          </Text>
+          <Text style={styles.bTextRegister}>ลงทะเบียน</Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>

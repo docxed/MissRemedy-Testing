@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "miss-remedy.appspot.com",
   messagingSenderId: "563200359979",
   appId: "1:563200359979:web:294ccba3356c572c0bb46e",
-  measurementId: "G-4T8K5KR5PP"
+  measurementId: "G-4T8K5KR5PP",
 };
 
 initializeApp(firebaseConfig);
@@ -29,11 +29,14 @@ export async function addChat(text, index, indexer, type) {
     if (text == "") {
       console.log("no data");
     } else {
-      const docRef = await setDoc(doc(firestore, "UserChat", "1", indexer, index+""), {
-        text,
-        type
-      });
-      console.log("Document written with ID: "+index);
+      const docRef = await setDoc(
+        doc(firestore, "UserChat", "1", indexer, index + ""),
+        {
+          text,
+          type,
+        }
+      );
+      console.log("Document written with ID: " + index);
     }
   } catch (err) {
     console.log("Error addText", err);
@@ -42,7 +45,9 @@ export async function addChat(text, index, indexer, type) {
 
 export async function getChat() {
   try {
-    const querySnapshot = await getDocs(collection(firestore, "UserChat", "1", "People01"));
+    const querySnapshot = await getDocs(
+      collection(firestore, "UserChat", "1", "People01")
+    );
     let dataList = [];
     querySnapshot.forEach((doc) => {
       // console.log(`${doc.id} => ${doc.data()}`)
@@ -55,9 +60,23 @@ export async function getChat() {
   }
 }
 
-export async function addUser(hnid, password, id, name, surname, hospital, address) {
+export async function addUser(
+  hnid,
+  password,
+  id,
+  name,
+  surname,
+  hospital,
+  address
+) {
   try {
-    if (hnid == "" || password == "" || id == "" || name == "" ||surname == "") {
+    if (
+      hnid == "" ||
+      password == "" ||
+      id == "" ||
+      name == "" ||
+      surname == ""
+    ) {
       console.log("no data");
     } else {
       const docRef = await addDoc(collection(firestore, "UserInfo"), {
@@ -67,7 +86,7 @@ export async function addUser(hnid, password, id, name, surname, hospital, addre
         hospital,
         hnid,
         password,
-        address
+        address,
       });
       console.log("Document written with ID: ");
     }
@@ -76,9 +95,23 @@ export async function addUser(hnid, password, id, name, surname, hospital, addre
   }
 }
 
-export async function addPharmacist(pharId, password, id, name, surname, address, shopName) {
+export async function addPharmacist(
+  pharId,
+  password,
+  id,
+  name,
+  surname,
+  address,
+  shopName
+) {
   try {
-    if (pharId == "" || password == "" || id == "" || name == "" ||surname == "") {
+    if (
+      pharId == "" ||
+      password == "" ||
+      id == "" ||
+      name == "" ||
+      surname == ""
+    ) {
       console.log("no data");
     } else {
       const docRef = await addDoc(collection(firestore, "PharmacistInfo"), {
@@ -88,7 +121,7 @@ export async function addPharmacist(pharId, password, id, name, surname, address
         pharId,
         password,
         address,
-        shopName
+        shopName,
       });
       console.log("Document written with ID: ");
     }
